@@ -14,4 +14,4 @@ chown -R radarr:radarr /config/ /opt/Radarr
 
 export XDG_CONFIG_HOME="/config/radarr"
 
-exec runuser -l radarr -c '/usr/bin/mono /opt/Radarr/Radarr.exe -nobrowser -data=/config/radarr'
+exec runuser -l radarr -c '/usr/bin/mono /opt/Radarr/Radarr.exe -nobrowser -data=/config'
