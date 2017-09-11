@@ -28,7 +28,7 @@ RUN cd /tmp && \
     export TAG=$(curl -qsX GET \
         https://api.github.com/repos/Radarr/Radarr/releases \
         | awk '/tag_name/{print $4;exit}' FS='[""]') && \
-    curl -qL -o /tmp/radarr.tar.gz \
+    curl -qsSL -o /tmp/radarr.tar.gz \
     https://github.com/galli-leo/Radarr/releases/download/${TAG}/Radarr.develop.${TAG#v}.linux.tar.gz && \
     cd /opt/ && \
     tar xf /tmp/radarr.tar.gz && \
