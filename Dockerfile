@@ -33,7 +33,6 @@ RUN cd /tmp && \
     cd /opt/ && \
     tar xf /tmp/radarr.tar.gz && \
     rm /tmp/radarr.tar.gz && \
-    ln -s /opt/Radarr/UI/Content/Fonts /opt/Radarr/UI/Content/fonts && \
     chown -R radarr:radarr /opt/Radarr
 
 # Need a config and storage volume, expose proper port
