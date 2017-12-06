@@ -9,6 +9,11 @@ if [ "$( id -g radarr )" -ne "${LGID}" ]; then
     groupmod -o -g ${LGID} radarr
 fi
 
+# Fix for silly mono/mediainfo libs
+if [ ! -f /usr/lib64/libmediainfo.so.0 ]; then
+    ln -s /usr/lib64/libmediainfo.so.17 /usr/lib64/libmediainfo.so.0
+fi
+
 # Set permissions
 chown -R radarr:radarr /config/ /opt/Radarr
 
