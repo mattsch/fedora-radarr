@@ -1,4 +1,4 @@
-FROM mattsch/fedora-rpmfusion:26
+FROM mattsch/fedora-rpmfusion:27
 MAINTAINER Matthew Schick <matthew.schick@gmail.com>
 
 # Run updates
@@ -44,4 +44,3 @@ COPY run-radarr.sh update-radarr.sh /bin/
 
 # Run our script
 CMD ["/bin/run-radarr.sh"]
-
