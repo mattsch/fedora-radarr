@@ -10,6 +10,7 @@ RUN dnf install -yq mediainfo \
                     mono-core \
                     mono-locale-extras \
                     procps-ng \
+                    shadow-utils \
                     tar \
                     unrar && \
     dnf clean all
