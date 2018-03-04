@@ -1,5 +1,6 @@
-FROM mattsch/fedora-rpmfusion:latest
+FROM mattsch/fedora-rpmfusion:27
 MAINTAINER Matthew Schick <matthew.schick@gmail.com>
+ARG upstream_tag=v0.2.0.995
 
 # Run updates
 RUN dnf upgrade -yq && \
@@ -17,7 +18,7 @@ RUN dnf install -yq mediainfo \
 
 # Set uid/gid (override with the '-e' flag), 1000/1000 used since it's the
 # default first uid/gid on a fresh Fedora install
-ENV LUID=1000 LGID=1000
+ENV LUID=1000 LGID=1000 URL="https://github.com/galli-leo/Radarr/releases/download"
 
 # Create the radarr user/group
 RUN groupadd -g $LGID radarr && \
@@ -25,15 +26,10 @@ RUN groupadd -g $LGID radarr && \
     -g $LGID -u $LUID radarr
 
 # Grab the installer, do the thing
-RUN cd /tmp && \
-    export TAG=$(curl -qsX GET \
-        https://api.github.com/repos/Radarr/Radarr/releases \
-        | awk '/tag_name/{print $4;exit}' FS='[""]') && \
-    curl -qsSL -o /tmp/radarr.tar.gz \
-    https://github.com/galli-leo/Radarr/releases/download/${TAG}/Radarr.develop.${TAG#v}.linux.tar.gz && \
-    cd /opt/ && \
-    tar xf /tmp/radarr.tar.gz && \
-    rm /tmp/radarr.tar.gz && \
+RUN cd /opt && \
+    curl -sL -o - \
+        ${URL}/${upstream_tag}/Radarr.develop.${upstream_tag#v}.linux.tar.gz \
+        | tar -xzf - && \
     chown -R radarr:radarr /opt/Radarr
 
 # Need a config and storage volume, expose proper port
@@ -45,4 +41,3 @@ COPY run-radarr.sh update-radarr.sh /bin/
 
 # Run our script
 CMD ["/bin/run-radarr.sh"]
-
