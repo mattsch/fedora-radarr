@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mattsch/fedora-radarr.svg?branch=master)](https://travis-ci.org/mattsch/fedora-radarr)
+
 # Fedora Radarr Docker Container
 
 Docker container for [Radarr](https://radarr.tv/) using Fedora.
@@ -24,3 +26,8 @@ docker create -v /path/to/config/dir:/config \
     -e LUID=1234 -e LGID=1234 \
     -p 7878:7878 --name=radarr mattsch/fedora-radarr
 ```
+
+## Tags
+
+Tags should follow upstream releases (including prereleases) and latest should
+be the latest built.
