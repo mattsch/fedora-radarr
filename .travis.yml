@@ -6,7 +6,7 @@ services:
 env:
   global:
   - IMG_NAME="docker.io/mattsch/fedora-radarr"
-  - VER="v0.2.0.995"
+  - VER="v0.2.0.1066"
 
 script:
 - 'docker login -u "$D_U" -p "$D_P"'
