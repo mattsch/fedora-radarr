@@ -1,5 +1,5 @@
-FROM mattsch/fedora-rpmfusion:27
-MAINTAINER Matthew Schick <matthew.schick@gmail.com>
+FROM mattsch/fedora-rpmfusion:28
+LABEL maintainer="Matthew Schick <matthew.schick@gmail.com>"
 ARG upstream_tag=v0.2.0.995
 
 # Run updates
