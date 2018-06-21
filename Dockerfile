@@ -6,6 +6,9 @@ ARG upstream_tag=v0.2.0.995
 RUN dnf upgrade -yq && \
     dnf clean all
 
+# Add copr
+COPY tpokorra-mono-fedora.repo /etc/yum.repos.d/
+
 # Install required packages
 RUN dnf install -yq mediainfo \
                     mono-core \
